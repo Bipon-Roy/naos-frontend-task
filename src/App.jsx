@@ -24,10 +24,6 @@ const App = () => {
             const trackResult = await searchTrack(query);
             if (trackResult) {
                 setTrack(trackResult);
-                if (trackResult.preview_url) {
-                    const audio = new Audio(trackResult.preview_url);
-                    audio.play();
-                }
             } else {
                 setTrackError(true); //setting error state when no track was found
             }
@@ -85,7 +81,7 @@ const App = () => {
                         <h2 className="text-xl font-semibold mb-2">
                             {track.name} by {track.artists[0].name}
                         </h2>
-                        <audio controls src={track.preview_url} autoPlay>
+                        <audio autoPlay controls src={track.preview_url}>
                             Your browser does not support the audio element.
                         </audio>
                     </div>
@@ -113,7 +109,7 @@ const App = () => {
                         imageError && (
                             <p className="text-red-500 text-center my-2 font-medium">
                                 <span className="uppercase">Sorry!</span> No images were found, or
-                                an error occurred.
+                                an erroar occurred.
                             </p>
                         )
                     )}
